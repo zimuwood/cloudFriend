@@ -1,0 +1,52 @@
+spring:
+  mvc:
+    path match:
+      matching-strategy: ANT_PATH_MATCHER #swagger配置
+  application:
+    name: cloudFriends-backend
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cloud_friends
+    username: root
+
+  # redis 配置
+  redis:
+    port: 6379
+    host: localhost
+    database: 0
+    redisson-database: 1
+
+  # session 失效时间
+  session:
+    timeout: 86400
+    store-type: redis
+  servlet:
+    multipart:
+      # 单个文件大小为100MB
+      max-file-size: 100MB
+      # 总上传的数据大小110MB
+      max-request-size: 110MB
+      enabled: true
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: isDelete # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+
+# 阿里云OSS
+aliyun:
+  oss:
+
+
+#Swagger配置
+swagger:
+  enable: true
+  application-version: 1.0
+knife4j:
+  enable: true
